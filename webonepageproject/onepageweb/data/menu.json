@@ -1,0 +1,28 @@
+{
+    "menu": [
+      {
+        "name": "Hovězí burger",
+        "price": 189,
+        "description": "Šťavnaté hovězí maso, čedar, domácí omáčka.",
+        "category": "Hlavní jídla"
+      },
+      {
+        "name": "Čokoládové muffiny",
+        "price": 59,
+        "description": "Čokoládové muffiny",
+        "category": "Hlavní jídla"
+      },
+      {
+        "name": "Caesar salát",
+        "price": 149,
+        "description": "Kuřecí maso, parmazán, krutony.",
+        "category": "Saláty"
+      },
+      {
+        "name": "Domácí limonáda",
+        "price": 55,
+        "description": "Citrón, máta, třtinový cukr.",
+        "category": "Nápoje"
+      }
+    ]
+   }
