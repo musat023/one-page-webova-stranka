@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Restaurace G</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurace G</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-<h1 id="restaurant-name">Restaurace</h1>
-<p id="restaurant-slogan"></p>
-<nav>
-<a href="#about">O restauraci</a>
-<a href="#menu">Menu</a>
-<a href="#gallery">Galerie</a>
-<a href="#contact">Kontakt</a>
-</nav>
-</header>
-<main>
-<section id="about">
-<h2>O restauraci</h2>
-<p id="restaurant-desc"></p>
-</section>
-<section id="menu">
-<h2>Menu</h2>
-<div id="menu-list" class="menu-container"></div>
-</section>
-<section id="gallery">
-<h2>Galerie</h2>
-<div id="gallery-container" class="gallery-grid"></div>
-</section>
-<section id="contact">
-<h2>Kontakt</h2>
-<p><strong>Adresa:</strong> <span id="address"></span></p>
-<p><strong>Telefon:</strong> <span id="phone"></span></p>
-<p><strong>Email:</strong> <span id="email"></span></p>
-<h3>Otevírací doba</h3>
-<ul id="open-hours"></ul>
-</section>
-</main>
-<script src="script.js"></script>
+  <header>
+    <h1 id="restaurant-name">Restaurace</h1>
+    <p id="restaurant-slogan"></p>
+    <nav>
+      <a href="#about">O restauraci</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>O restauraci</h2>
+      <p id="restaurant-desc"></p>
+    </section>
+
+    <section id="menu">
+      <h2>Menu</h2>
+      <div id="filter-buttons"></div>
+      <div id="menu-list" class="menu-container"></div>
+    </section>
+
+    <section id="gallery">
+      <h2>Galerie</h2>
+      <div id="gallery-container" class="gallery-grid"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Kontakt</h2>
+      <p><strong>Adresa:</strong> <span id="address"></span></p>
+      <p><strong>Telefon:</strong> <span id="phone"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <h3>Otevírací doba</h3>
+      <ul id="open-hours"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
