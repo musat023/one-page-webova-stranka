@@ -58,14 +58,30 @@ section {
 .menu-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
+  gap: 20px;
+  padding: 20px 0;
 }
 
 .menu-item {
-  padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fffaf5;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.menu-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* aby obrázek nebyl zdeformovaný */
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .gallery-grid {

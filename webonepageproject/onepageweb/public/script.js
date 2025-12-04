@@ -36,7 +36,14 @@ smartFetch('data/menu.json')
       menu.forEach(item => {
         const el = document.createElement('div');
         el.className = 'menu-item';
-        el.innerHTML = `<h3>${item.name}</h3><p>${item.description}</p><strong>${item.price} Kč</strong>`;
+
+        el.innerHTML = `
+          <img src="${item.img}" alt="${item.alt || item.name}" class="menu-img">
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <strong>${item.price} Kč</strong>
+        `;
+        
         container.appendChild(el);
       });
     }
@@ -44,6 +51,7 @@ smartFetch('data/menu.json')
     renderMenu(data.menu);
   })
   .catch(err => showError('MENU JSON ERROR:', err));
+
 
 // GALLERY
 smartFetch('data/gallery.json')

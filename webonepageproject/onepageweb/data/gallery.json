@@ -1,10 +1,7 @@
 {
     "images": [
-      { "src": "assets/img/restaurant1.jpeg", "alt": "Interiér restaurace" },
-      { "src": "assets/img/food1.jpeg", "alt": "Hlavní jídlo" },
-      { "src": "assets/img/food2.jpg", "alt": "Hlavní jídlo 2" },
-      { "src": "assets/img/deserts1.jpg", "alt": "Dezert" },
-      { "src": "assets/img/drinks.jpg", "alt": "Nápoje" }
+      { "src": "assets/img/restaurant1.jpeg", "alt": "Interiér restaurace" }
+
     ]
    }
 
