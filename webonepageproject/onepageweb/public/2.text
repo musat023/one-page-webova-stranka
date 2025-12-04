@@ -5,11 +5,6 @@
   padding: 0;
 }
 
-/* YENİ: YUMUŞAK KAYDIRMA (SMOOTH SCROLL) */
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: "Poppins", sans-serif;
   background: #0a0a0a;
@@ -31,13 +26,12 @@ header {
   z-index: 1000;
   border-bottom: 1px solid #b89232;
   box-shadow: 0 0 15px rgba(185,146,50,0.4);
-  /* HEADER KÜÇÜLTME İÇİN GEÇİŞLER */
   transition: padding 0.3s ease, box-shadow 0.3s ease; 
 }
 
-/* HEADER SCROLLED STATE (YENİ: JavaScript ile eklenir) */
+/* HEADER SCROLLED STATE */
 header.scrolled {
-  padding: 15px 20px; /* Daha küçük padding */
+  padding: 15px 20px;
   box-shadow: 0 0 20px rgba(185,146,50,0.6);
 }
 
@@ -46,26 +40,22 @@ header h1 {
   font-weight: 700;
   letter-spacing: 3px;
   color: #f6d686;
-  /* HEADER KÜÇÜLTME İÇİN GEÇİŞLER */
   transition: font-size 0.3s ease; 
 }
 
-/* HEADER SCROLLED STATE H1 (YENİ) */
 header.scrolled h1 {
-  font-size: 2rem; /* Başlık boyutunu küçült */
+  font-size: 2rem;
 }
 
 header p {
   opacity: 0.9;
   margin-top: 6px;
   font-weight: 300;
-  /* HEADER KÜÇÜLTME İÇİN GEÇİŞLER */
   transition: opacity 0.3s ease;
 }
 
-/* HEADER SCROLLED STATE P (YENİ) */
 header.scrolled p {
-  opacity: 0; /* Sloganı yavaşça gizle */
+  opacity: 0;
   height: 0;
   margin-top: 0;
   overflow: hidden;
@@ -82,12 +72,11 @@ nav a {
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
-  /* Odaklanma stili eklendi */
   outline-offset: 4px; 
 }
 
 nav a:hover,
-nav a:focus { /* YENİ: Erişilebilirlik için focus eklendi */
+nav a:focus { 
   color: #ffeb9a;
   text-shadow: 0 0 12px #ffea9a, 0 0 25px #b89232;
 }
@@ -107,13 +96,6 @@ section {
   border-radius: 14px;
   border: 1px solid #2a2a2a;
   box-shadow: 0 0 18px rgba(255,223,140,0.05);
-}
-
-/* ABOUT BÖLÜMÜNÜ TEMİZLEME */
-/* About metninin tüm alanı kaplamasını sağlar */
-#restaurant-desc {
-    font-size: 1.05rem;
-    line-height: 1.8;
 }
 
 /* PREMIUM GOLD SECTION TITLE */
@@ -140,6 +122,36 @@ section h2::after {
   transform: translateX(-50%);
   border-radius: 3px;
   box-shadow: 0 0 12px rgba(255, 230, 150, 0.7);
+}
+
+/* ======================================= */
+/* YENİ: ABOUT BÖLÜMÜ İYİLEŞTİRMELERİ */
+/* ======================================= */
+.about-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* Metnin üsten başlamasını sağlar */
+}
+
+#restaurant-desc {
+    flex: 2; /* Metin alanına daha fazla yer ayırır */
+    padding-right: 20px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.about-image-wrapper {
+    flex: 1; /* Görsel alanına daha az yer ayırır */
+    min-width: 250px;
+}
+
+.about-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #b89232;
+    box-shadow: 0 0 20px rgba(244, 210, 114, 0.3);
 }
 
 /* MENU */
@@ -179,26 +191,12 @@ section h2::after {
   margin-bottom: 4px;
 }
 
-.menu-item p {
-    
-    text-align: left; 
-    
-    
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-   
-    margin-bottom: 10px;
-}
 .menu-item strong {
   display: block;
   margin-top: 10px;
   font-size: 1.1rem;
   font-weight: bold;
   color: #ffe7a0;
-  text-align: center; 
 }
 
 /* FILTER BUTTONS */
@@ -224,7 +222,7 @@ section h2::after {
   box-shadow: 0 0 12px #b89232;
 }
 
-
+/* AKTİF FİLTRE BUTONU STİLİ */
 #filter-buttons button.active-filter {
   background-color: #f2d27b;
   color: #0a0a0a;
@@ -262,14 +260,16 @@ section h2::after {
     max-height: 90vh;
 }
 
-
+/* ======================================= */
+/* YENİ: CONTACT VE İKONLAR */
+/* ======================================= */
 #contact p strong {
     font-size: 1.1rem;
     margin-right: 8px;
 }
 
 #contact ul {
-    list-style: none; 
+    list-style: none; /* Varsayılan list stili kaldırıldı */
     padding-left: 0;
     margin-top: 15px;
 }
@@ -279,18 +279,9 @@ section h2::after {
     border-bottom: 1px dashed #222; /* Daha şık bir ayraç */
 }
 
-
-.section-error {
-  margin-top: 20px;
-  padding: 10px;
-  background: #3a1a1a;
-  color: #ffaaaa;
-  border: 1px solid #8a2a2a;
-  border-radius: 8px;
-  text-align: center;
-}
-
-
+/* ======================================= */
+/* YENİ: FOOTER (ALT BİLGİ) */
+/* ======================================= */
 footer {
     background: #000;
     color: #b89232;
@@ -317,6 +308,17 @@ footer {
 }
 
 
+/* HATA MESAJI STİLİ */
+.section-error {
+  margin-top: 20px;
+  padding: 10px;
+  background: #3a1a1a;
+  color: #ffaaaa;
+  border: 1px solid #8a2a2a;
+  border-radius: 8px;
+  text-align: center;
+}
+
 /* ======================================= */
 /* WEBKIT SCROLLBAR ÖZELLEŞTİRME */
 /* ======================================= */
@@ -327,16 +329,27 @@ footer {
   background: #111;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9a556; 
+  background: #c9a556;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f6d686; /
+  background: #f6d686;
 }
 
-
+/* MEDYA SORGULARI (RESPONSIVE TASARIM İÇİN YENİ EKLEME) */
 @media (max-width: 768px) {
+    /* About görselini mobil cihazlarda metnin altına al */
+    .about-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .about-image-wrapper {
+        min-width: 100%;
+        order: -1; /* Görseli metnin üzerine taşır */
+    }
 
+    /* Başlık boyutlarını mobil için küçült */
     header h1 {
         font-size: 2.2rem;
     }

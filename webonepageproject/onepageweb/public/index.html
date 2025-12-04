@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Restaurace G</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
   <header>
@@ -21,7 +22,9 @@
   <main>
     <section id="about">
       <h2>O restauraci</h2>
-      <p id="restaurant-desc"></p>
+      <div class="about-content">
+        <p id="restaurant-desc"></p>
+        </div>
     </section>
 
     <section id="menu">
@@ -37,14 +40,28 @@
 
     <section id="contact">
       <h2>Kontakt</h2>
-      <p><strong>Adresa:</strong> <span id="address"></span></p>
-      <p><strong>Telefon:</strong> <span id="phone"></span></p>
-      <p><strong>Email:</strong> <span id="email"></span></p>
-      <h3>Otevírací doba</h3>
+      <p>
+        <strong><i class="fas fa-map-marker-alt" style="color:#f4d890;"></i> Adresa:</strong> 
+        <span id="address"></span>
+      </p>
+      <p>
+        <strong><i class="fas fa-phone" style="color:#f4d890;"></i> Telefon:</strong> 
+        <span id="phone"></span>
+      </p>
+      <p>
+        <strong><i class="fas fa-envelope" style="color:#f4d890;"></i> Email:</strong> 
+        <span id="email"></span>
+      </p>
+      <h3><i class="fas fa-clock" style="color:#f4d890;"></i> Otevírací doba</h3>
       <ul id="open-hours"></ul>
     </section>
   </main>
+  
+
 
   <script src="script.js"></script>
+  <script>
+    document.getElementById('current-year').innerText = new Date().getFullYear();
+  </script>
 </body>
 </html>
