@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurace G</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div id="language-switcher">
+      <button onclick="changeLanguage('cs')" id="lang-cs" class="active-lang">Česky</button>
+      <button onclick="changeLanguage('tr')" id="lang-tr">Türkçe</button>
+      <button onclick="changeLanguage('en')" id="lang-en">English</button>
+    </div>
+    <h1 id="restaurant-name">Restaurace G</h1>
+    <p id="restaurant-slogan"></p>
+    <nav>
+      <a href="#about" data-key="nav-about">O restauraci</a>
+      <a href="#menu" data-key="nav-menu">Menu</a>
+      <a href="#gallery" data-key="nav-gallery">Galerie</a>
+      <a href="#contact" data-key="nav-contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2 data-key="heading-about">O restauraci</h2>
+      <div class="about-content">
+        <p id="restaurant-desc"></p>
+        </div>
+    </section>
+
+    <section id="menu">
+      <h2 data-key="heading-menu">Menu</h2>
+      <div id="filter-buttons"></div>
+      <div id="menu-list" class="menu-container"></div>
+    </section>
+
+    <section id="gallery">
+      <h2 data-key="heading-gallery">Galerie</h2>
+      <div id="gallery-container" class="gallery-grid"></div>
+    </section>
+
+    <section id="contact">
+      <h2 data-key="heading-contact">Kontakt</h2>
+      <p>
+        <strong><i class="fas fa-map-marker-alt" style="color:#f4d890;"></i> <span data-key="contact-address">Adresa:</span></strong> 
+        <span id="address"></span>
+      </p>
+      <p>
+        <strong><i class="fas fa-phone" style="color:#f4d890;"></i> <span data-key="contact-phone">Telefon:</span></strong> 
+        <span id="phone"></span>
+      </p>
+      <p>
+        <strong><i class="fas fa-envelope" style="color:#f4d890;"></i> <span data-key="contact-email">Email:</span></strong> 
+        <span id="email"></span>
+      </p>
+      <h3 data-key="contact-hours"><i class="fas fa-clock" style="color:#f4d890;"></i> Otevírací doba</h3>
+      <ul id="open-hours"></ul>
+    </section>
+  </main>
+  
+  <footer>
+    <p> &copy; <span id="current-year"></span> </p>
+    <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('current-year').innerText = new Date().getFullYear();
+    // Sayfa yüklendiğinde varsayılan dil olan Çekçe için tüm içeriği yükle
+    window.onload = () => loadContent('cs'); 
+  </script>
+</body>
+</html>

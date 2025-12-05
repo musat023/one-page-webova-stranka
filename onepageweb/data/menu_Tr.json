@@ -1,0 +1,14 @@
+{
+    "menu": [
+      {"name": "Sığır Burger", "price": 189, "description": "Sulu dana eti, cheddar, ev yapımı sos.", "category": "Ana Yemekler", "img":"../assets/img/food1.jpeg", "alt": "Ana Yemek"},
+      {"name": "Pizza Margherita", "price": 169, "description": "Domates soslu, mozzarella ve fesleğenli klasik pizza.", "category": "Ana Yemekler", "img": "../assets/img/pizza.jpg", "alt": "Ana Yemek 3"},
+      {"name": "Kebap", "price": 199, "description": "Türk usulü kebap", "category": "Ana Yemekler", "img": "../assets/img/kebab.jpg", "alt": "Ana Yemek 4"},
+      {"name": "Döner Kebap", "price": 129, "description": "Türk usulü döner kebap", "category": "Ana Yemekler", "img": "../assets/img/doner.jpg", "alt": "Ana Yemek 5"},
+      {"name": "Çikolatalı Muffin", "price": 59, "description": "Çikolatalı muffin", "category": "Tatlılar", "img": "../assets/img/deserts1.jpg", "alt": "Tatlı"},
+      {"name": "Baklava", "price": 79, "description": "Fındık ve ballı geleneksel tatlı hamur işi.", "category": "Tatlılar", "img": "../assets/img/baklava.jpg", "alt": "Tatlı 2"},
+      {"name": "Sezar Salata", "price": 149, "description": "Tavuk eti, parmesan, kruton.", "category": "Salatalar", "img": "../assets/img/food2.jpg", "alt": "Ana Yemek 2"},
+      {"name": "Türk Kahvesi", "price": 69, "description": "Sevgiyle hazırlanan geleneksel Türk kahvesi.", "category": "Sıcak İçecekler", "img": "../assets/img/turkishcoffe.jpg", "alt": "İçecekler"},
+      {"name": "Çay", "price": 55, "description": "Çeşitli çay türleri.", "category": "Sıcak İçecekler", "img": "../assets/img/caj.jpg", "alt": "İçecekler"},
+      {"name": "Ev Yapımı Limonata", "price": 55, "description": "Limon, nane, esmer şeker.", "category": "İçecekler", "img": "../assets/img/drinks.jpg", "alt": "İçecekler"}
+    ]
+}

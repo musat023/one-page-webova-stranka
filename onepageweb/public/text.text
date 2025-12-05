@@ -1,0 +1,373 @@
+function smartFetch(path) {
+  return fetch(`../${path}`).catch(() => fetch(`/${path}`));
+}
+
+function showError(tag, err) {
+  console.error(tag, err);
+}
+
+// ABOUT
+smartFetch('data/about.json')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('restaurant-name').innerText = data.name || 'Restaurace';
+    document.getElementById('restaurant-slogan').innerText = data.slogan || '';
+    document.getElementById('restaurant-desc').innerText = data.description || '';
+  })
+  .catch(err => showError('ABOUT JSON ERROR:', err));
+
+// MENU + FILTER
+smartFetch('data/menu.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('menu-list');
+    const filterContainer = document.getElementById('filter-buttons');
+    const allCategories = [...new Set(data.menu.map(item => item.category))];
+
+    allCategories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.innerText = cat;
+      btn.onclick = () => renderMenu(data.menu.filter(item => item.category === cat));
+      filterContainer.appendChild(btn);
+    });
+
+    function renderMenu(menu) {
+      container.innerHTML = '';
+      menu.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'menu-item';
+
+        el.innerHTML = `
+          <img src="${item.img}" alt="${item.alt || item.name}" class="menu-img">
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <strong>${item.price} Kč</strong>
+        `;
+        
+        container.appendChild(el);
+      });
+    }
+
+    renderMenu(data.menu);
+  })
+  .catch(err => showError('MENU JSON ERROR:', err));
+
+
+// GALLERY
+smartFetch('data/gallery.json')
+  .then(res => res.json())
+  .then(data => {
+    const gallery = document.getElementById('gallery-container');
+    data.images.forEach(img => {
+      const imgEl = document.createElement('img');
+      imgEl.src = `../${img.src}`;
+      imgEl.alt = img.alt || '';
+      gallery.appendChild(imgEl);
+    });
+  })
+  .catch(err => showError('GALLERY JSON ERROR:', err));
+
+// CONTACT
+smartFetch('data/contact.json')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('address').innerText = data.address || '';
+    document.getElementById('phone').innerText = data.phone || '';
+    document.getElementById('email').innerText = data.email || '';
+    const list = document.getElementById('open-hours');
+    list.innerHTML = '';
+    for (let day in data.opening_hours) {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${day}:</strong> ${data.opening_hours[day]}`;
+      list.appendChild(li);
+    }
+  })
+  .catch(err => showError('CONTACT JSON ERROR:', err));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0a0a0a;
+  color: #e6e6e6;
+  line-height: 1.7;
+}
+
+/* IMPORT FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* HEADER */
+header {
+  background: #000;
+  color: #f9d57a;
+  padding: 35px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #b89232;
+  box-shadow: 0 0 15px rgba(185,146,50,0.4);
+}
+
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #f6d686;
+}
+
+header p {
+  opacity: 0.9;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+/* NAV */
+nav {
+  margin-top: 18px;
+}
+
+nav a {
+  color: #c9a556;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffeb9a;
+  text-shadow: 0 0 12px #ffea9a, 0 0 25px #b89232;
+}
+
+/* MAIN */
+main {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 16px;
+}
+
+/* SECTIONS */
+section {
+  background: #111;
+  margin-bottom: 28px;
+  padding: 35px;
+  border-radius: 14px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 0 18px rgba(255,223,140,0.05);
+}
+
+/* PREMIUM GOLD SECTION TITLE */
+section h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #f6d686;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 12px;
+  text-transform: uppercase;
+}
+
+section h2::after {
+  content: "";
+  width: 85px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #e7c878, transparent);
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  box-shadow: 0 0 12px rgba(255, 230, 150, 0.7);
+}
+
+/* MENU */
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding-top: 20px;
+}
+
+.menu-item {
+  background: #151515;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2f2f2f;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 0 22px rgba(244,210,114,0.27);
+  border-color: #e7c46a;
+}
+
+.menu-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.menu-item h3 {
+  font-weight: 600;
+  color: #f2d27b;
+  margin-bottom: 4px;
+}
+
+.menu-item strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffe7a0;
+}
+
+/* FILTER BUTTONS */
+#filter-buttons {
+  margin-bottom: 16px;
+}
+
+#filter-buttons button {
+  margin-right: 10px;
+  padding: 7px 16px;
+  border: 1px solid #b89232;
+  background-color: #1b1b1b;
+  color: #e7c878;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#filter-buttons button:hover {
+  background-color: #b89232;
+  color: #111;
+  box-shadow: 0 0 12px #b89232;
+}
+
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(238,200,92,0.45);
+  border: 1px solid #eecd74;
+}
+
+/* CONTACT */
+#contact strong {
+  color: #f4d890;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurace G</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 id="restaurant-name">Restaurace</h1>
+    <p id="restaurant-slogan"></p>
+    <nav>
+      <a href="#about">O restauraci</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>O restauraci</h2>
+      <p id="restaurant-desc"></p>
+    </section>
+
+    <section id="menu">
+      <h2>Menu</h2>
+      <div id="filter-buttons"></div>
+      <div id="menu-list" class="menu-container"></div>
+    </section>
+
+    <section id="gallery">
+      <h2>Galerie</h2>
+      <div id="gallery-container" class="gallery-grid"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Kontakt</h2>
+      <p><strong>Adresa:</strong> <span id="address"></span></p>
+      <p><strong>Telefon:</strong> <span id="phone"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <h3>Otevírací doba</h3>
+      <ul id="open-hours"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

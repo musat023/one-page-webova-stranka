@@ -1,0 +1,14 @@
+{
+    "menu": [
+      {"name": "Beef Burger", "price": 189, "description": "Juicy beef, cheddar, homemade sauce.", "category": "Main Dishes", "img":"../assets/img/food1.jpeg", "alt": "Main Dish"},
+      {"name": "Pizza Margherita", "price": 169, "description": "Classic pizza with tomato sauce, mozzarella and basil.", "category": "Main Dishes", "img": "../assets/img/pizza.jpg", "alt": "Main Dish 3"},
+      {"name": "Kebab", "price": 199, "description": "Turkish style kebab", "category": "Main Dishes", "img": "../assets/img/kebab.jpg", "alt": "Main Dish 4"},
+      {"name": "Doner Kebab", "price": 129, "description": "Doner kebab with Turkish style", "category": "Main Dishes", "img": "../assets/img/doner.jpg", "alt": "Main Dish 5"},
+      {"name": "Chocolate Muffins", "price": 59, "description": "Chocolate muffins", "category": "Desserts", "img": "../assets/img/deserts1.jpg", "alt": "Dessert"},
+      {"name": "Baklava", "price": 79, "description": "Traditional sweet pastry with nuts and honey.", "category": "Desserts", "img": "../assets/img/baklava.jpg", "alt": "Dessert 2"},
+      {"name": "Caesar Salad", "price": 149, "description": "Chicken, parmesan, croutons.", "category": "Salads", "img": "../assets/img/food2.jpg", "alt": "Main Dish 2"},
+      {"name": "Turkish Coffee", "price": 69, "description": "Traditional Turkish coffee prepared with love.", "category": "Hot Drinks", "img": "../assets/img/turkishcoffe.jpg", "alt": "Drinks"},
+      {"name": "Tea", "price": 55, "description": "Various types of tea.", "category": "Hot Drinks", "img": "../assets/img/caj.jpg", "alt": "Drinks"},
+      {"name": "Homemade Lemonade", "price": 55, "description": "Lemon, mint, cane sugar.", "category": "Drinks", "img": "../assets/img/drinks.jpg", "alt": "Drinks"}
+    ]
+}

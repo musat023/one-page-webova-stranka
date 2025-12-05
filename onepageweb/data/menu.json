@@ -1,0 +1,86 @@
+{
+    "menu": [
+      {
+        "name": "Hovězí burger",
+        "price": 189,
+        "description": "Šťavnaté hovězí maso, čedar, domácí omáčka.",
+        "category": "Hlavní jídla",
+        "img":"../assets/img/food1.jpeg", 
+        "alt": "Hlavní jídlo"
+        
+      },
+      {
+        "name": "Pizza Margherita",
+        "price": 169,
+        "description": "Klasická pizza s rajčatovou omáčkou, mozzarellou a bazalkou.",
+        "category": "Hlavní jídla",
+        "img": "../assets/img/pizza.jpg", 
+        "alt": "Hlavní jídlo 3"
+      },
+      {
+        "name": "Kebab",
+        "price": 199,
+        "description": "kebab s tureckým stylem",
+        "category": "Hlavní jídla",
+        "img": "../assets/img/kebab.jpg", 
+        "alt": "Hlavní jídlo 4"
+      },
+       {
+        "name": "Doner Kebab",
+        "price": 129,
+        "description": "Doner kebab s tureckým stylem",
+        "category": "Hlavní jídla",
+        "img": "../assets/img/doner.jpg", 
+        "alt": "Hlavní jídlo 5"
+      },
+      {
+        "name": "Čokoládové muffiny",
+        "price": 59,
+        "description": "Čokoládové muffiny",
+        "category": "Dezerty",
+        "img": "../assets/img/deserts1.jpg", 
+        "alt": "Dezert"
+      },
+         {
+        "name": "Baklava",
+        "price": 79,
+        "description": "Tradiční sladký dezert z listového těsta s ořechy a medem.",
+        "category": "Dezerty",
+        "img": "../assets/img/baklava.jpg", 
+        "alt": "Dezert 2"
+      },
+      {
+        "name": "Caesar salát",
+        "price": 149,
+        "description": "Kuřecí maso, parmazán, krutony.",
+        "category": "Saláty",
+        "img": "../assets/img/food2.jpg", 
+        "alt": "Hlavní jídlo 2"
+      },
+      {
+        "name": "Turecká káva",
+        "price": 69,
+        "description": "Tradiční turecká káva připravená s láskou.",
+        "category": "Horké nápoje",
+        "img": "../assets/img/turkishcoffe.jpg", 
+        "alt": "Nápoje"
+      },
+      {
+        "name": "Čaj",
+        "price": 55,
+        "description": "Různé druhy čajů.",
+        "category": "Horké nápoje",
+        "img": "../assets/img/caj.jpg", 
+        "alt": "Nápoje"
+      },
+      {
+        "name": "Domácí limonáda",
+        "price": 55,
+        "description": "Citrón, máta, třtinový cukr.",
+        "category": "Nápoje",
+        "img": "../assets/img/drinks.jpg", 
+        "alt": "Nápoje"
+      }
+    ]
+   }
+

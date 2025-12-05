@@ -1,0 +1,14 @@
+{
+    "address": "Náměstí 999, Praha 365 (Adres değişmedi)",
+    "phone": "+420 111 333 000",
+    "email": "info@g.cz",
+    "opening_hours": {
+      "pondělí": "10:00 - 22:00",
+      "úterý": "10:00 - 22:00",
+      "středa": "10:00 - 22:00",
+      "čtvrtek": "10:00 - 23:00",
+      "pátek": "10:00 - 23:00",
+      "sobota": "11:00 - 23:00",
+      "neděle": "11:00 - 00:00"
+    }
+}
