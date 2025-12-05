@@ -63,7 +63,7 @@ smartFetch('data/menu.json')
 
     // "Tümü" butonunu oluştur (Varsayılan aktif)
     const allBtn = document.createElement('button');
-    allBtn.innerText = 'Tümü';
+    allBtn.innerText = 'Menu';
     allBtn.onclick = () => renderMenu(data.menu, allBtn);
     filterContainer.appendChild(allBtn);
 
