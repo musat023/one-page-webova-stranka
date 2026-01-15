@@ -1,97 +1,377 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Restaurace G</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-  <header>
-    <div id="language-switcher">
-      <button onclick="changeLanguage('cs')" id="lang-cs" class="active-lang">Česky</button>
-      <button onclick="changeLanguage('tr')" id="lang-tr">Türkçe</button>
-      <button onclick="changeLanguage('en')" id="lang-en">English</button>
-    </div>
-    <h1 id="restaurant-name">Restaurace G</h1>
-    <p id="restaurant-slogan"></p>
-    <nav>
-      <a href="#about" data-key="nav-about">O restauraci</a>
-      <a href="#menu" data-key="nav-menu">Menu</a>
-      <a href="#gallery" data-key="nav-gallery">Galerie</a>
-      <a href="#contact" data-key="nav-contact">Kontakt</a>
-    </nav>
-  </header>
 
-  <main>
-    <section id="about">
-      <h2 data-key="heading-about">O restauraci</h2>
-      <div class="about-content">
-        <p id="restaurant-desc"></p>
-      </div>
-    </section>
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    <section id="menu">
-      <h2 data-key="heading-menu">Menu</h2>
-      <div id="filter-buttons"></div>
-      <div id="menu-list" class="menu-container"></div>
-    </section>
+/* YENİ: YUMUŞAK KAYDIRMA (SMOOTH SCROLL) */
+html {
+  scroll-behavior: smooth;
+}
 
-    <section id="gallery">
-      <h2 data-key="heading-gallery">Galerie</h2>
-      <div id="gallery-container" class="gallery-grid"></div>
-    </section>
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0a0a0a;
+  color: #e6e6e6;
+  line-height: 1.7;
+}
 
-    <section id="contact">
-      <h2 data-key="heading-contact">Kontakt</h2>
-      <p>
-        <strong><i class="fas fa-map-marker-alt" style="color:#f4d890;"></i> <span data-key="contact-address">Adresa:</span></strong> 
-        <span id="address"></span>
-      </p>
-      <p>
-        <strong><i class="fas fa-phone" style="color:#f4d890;"></i> <span data-key="contact-phone">Telefon:</span></strong> 
-        <span id="phone"></span>
-      </p>
-      <p>
-        <strong><i class="fas fa-envelope" style="color:#f4d890;"></i> <span data-key="contact-email">Email:</span></strong> 
-        <span id="email"></span>
-      </p>
-      <h3 data-key="contact-hours"><i class="fas fa-clock" style="color:#f4d890;"></i> Otevírací doba</h3>
-      <ul id="open-hours"></ul>
+/* IMPORT FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-      <h3 data-key="heading-form">Napište nám zprávu</h3>
-      <form id="contact-form" action="../api/send_message.php" method="POST">
-        <div class="form-group">
-            <label for="name" data-key="form-name">Jméno</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="email" data-key="form-email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="message" data-key="form-message">Zpráva:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" data-key="form-submit">Poslat</button>
-        <div id="form-message" class="form-message"></div>
-      </form>
-    </section>
-  </main>
-  
-  <footer>
-    <p> &copy; <span id="current-year"></span> </p>
-    <div class="social-links">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
-  </footer>
+/* HEADER */
+header {
+  background: #000;
+  color: #f9d57a;
+  padding: 35px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #b89232;
+  box-shadow: 0 0 15px rgba(185,146,50,0.4);
+  /* HEADER KÜÇÜLTME İÇİN GEÇİŞLER */
+  transition: padding 0.3s ease, box-shadow 0.3s ease; 
+}
 
-  <script src="script.js"></script>
-  <script>
-    document.getElementById('current-year').innerText = new Date().getFullYear();
-    window.onload = () => loadContent('cs'); 
-  </script>
-</body>
-</html>
+/* HEADER SCROLLED STATE (YENİ: JavaScript ile eklenir) */
+header.scrolled {
+  padding: 15px 20px; /* Daha küçük padding */
+  box-shadow: 0 0 20px rgba(185,146,50,0.6);
+}
+
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #f6d686;
+  /* HEADER KÜÇÜLTME İÇİN GEÇİŞLER */
+  transition: font-size 0.3s ease; 
+}
+
+/* HEADER SCROLLED STATE H1 (YENİ) */
+header.scrolled h1 {
+  font-size: 2rem; /* Başlık boyutunu küçült */
+}
+
+header p {
+  opacity: 0.9;
+  margin-top: 6px;
+  font-weight: 300;
+  /* HEADER KÜÇÜLTME İÇİN GEÇİŞLER */
+  transition: opacity 0.3s ease;
+}
+
+/* HEADER SCROLLED STATE P (YENİ) */
+header.scrolled p {
+  opacity: 0; /* Sloganı yavaşça gizle */
+  height: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+/* NAV */
+nav {
+  margin-top: 18px;
+}
+
+nav a {
+  color: #c9a556;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  /* Odaklanma stili eklendi */
+  outline-offset: 4px; 
+}
+
+nav a:hover,
+nav a:focus { /* YENİ: Erişilebilirlik için focus eklendi */
+  color: #ffeb9a;
+  text-shadow: 0 0 12px #ffea9a, 0 0 25px #b89232;
+}
+
+/* YENİ: DİL DEĞİŞTİRİCİ STİLLERİ */
+#language-switcher {
+    margin-bottom: 15px;
+}
+
+#language-switcher button {
+    padding: 5px 12px;
+    margin: 0 5px;
+    border: 1px solid #b89232;
+    background-color: #1b1b1b;
+    color: #e7c878;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#language-switcher button:hover {
+    background-color: #333;
+}
+
+#language-switcher button.active-lang {
+    background-color: #f2d27b;
+    color: #0a0a0a;
+    font-weight: 600;
+    border-color: #f2d27b;
+    box-shadow: 0 0 10px rgba(242, 210, 123, 0.5);
+}
+
+
+/* MAIN */
+main {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 16px;
+}
+
+/* SECTIONS */
+section {
+  background: #111;
+  margin-bottom: 28px;
+  padding: 35px;
+  border-radius: 14px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 0 18px rgba(255,223,140,0.05);
+}
+
+/* ABOUT BÖLÜMÜNÜ TEMİZLEME */
+/* About metninin tüm alanı kaplamasını sağlar */
+#restaurant-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* PREMIUM GOLD SECTION TITLE */
+section h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #f6d686;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 12px;
+  text-transform: uppercase;
+}
+
+section h2::after {
+  content: "";
+  width: 85px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #e7c878, transparent);
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  box-shadow: 0 0 12px rgba(255, 230, 150, 0.7);
+}
+
+/* MENU */
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding-top: 20px;
+}
+
+.menu-item {
+  background: #151515;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2f2f2f;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 0 22px rgba(244,210,114,0.27);
+  border-color: #e7c46a;
+}
+
+.menu-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.menu-item h3 {
+  font-weight: 600;
+  color: #f2d27b;
+  margin-bottom: 4px;
+}
+
+.menu-item p {
+    
+    text-align: left; 
+    
+    
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+   
+    margin-bottom: 10px;
+}
+.menu-item strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffe7a0;
+  text-align: center; 
+}
+
+/* FILTER BUTTONS */
+#filter-buttons {
+  margin-bottom: 16px;
+}
+
+#filter-buttons button {
+  margin-right: 10px;
+  padding: 7px 16px;
+  border: 1px solid #b89232;
+  background-color: #1b1b1b;
+  color: #e7c878;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#filter-buttons button:hover,
+#filter-buttons button:focus {
+  background-color: #b89232;
+  color: #111;
+  box-shadow: 0 0 12px #b89232;
+}
+
+
+#filter-buttons button.active-filter {
+  background-color: #f2d27b;
+  color: #0a0a0a;
+  font-weight: 700;
+  border-color: #f2d27b;
+  box-shadow: 0 0 15px rgba(242, 210, 123, 0.7);
+}
+
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(238,200,92,0.45);
+  border: 1px solid #eecd74;
+}
+
+/* LIGHTBOX STİLİ */
+#lightbox img {
+    border: 3px solid #f6d686;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+
+#contact p strong {
+    font-size: 1.1rem;
+    margin-right: 8px;
+}
+
+#contact ul {
+    list-style: none; 
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+#contact ul li {
+    padding: 5px 0;
+    border-bottom: 1px dashed #222; /* Daha şık bir ayraç */
+}
+
+
+.section-error {
+  margin-top: 20px;
+  padding: 10px;
+  background: #3a1a1a;
+  color: #ffaaaa;
+  border: 1px solid #8a2a2a;
+  border-radius: 8px;
+  text-align: center;
+}
+
+
+footer {
+    background: #000;
+    color: #b89232;
+    text-align: center;
+    padding: 25px 20px;
+    border-top: 1px solid #222;
+    font-size: 0.9rem;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #c9a556;
+    font-size: 1.4rem;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffeb9a;
+    text-shadow: 0 0 10px rgba(255, 235, 154, 0.7);
+}
+
+
+/* ======================================= */
+/* WEBKIT SCROLLBAR ÖZELLEŞTİRME */
+/* ======================================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a556; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f6d686; /
+}
+
+
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+}
